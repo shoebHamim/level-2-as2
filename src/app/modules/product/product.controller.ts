@@ -73,7 +73,7 @@ const updateProductById = async (req: Request, res: Response) => {
         message: "No Product Found to Update!",
         data: result,
       });
-    }else{
+    } else {
       res.json({
         success: true,
         message: "Product updated successfully!",
@@ -111,16 +111,16 @@ const sendErrorResponse = (res: Response, err: any) => {
   res.status(500).json({
     success: false,
     message: "something went wrong!",
-    error:  err,
+    error: err,
   });
 };
 
-const noRouteFound=(req:Request,res:Response)=>{
+const noRouteFound = (req: Request, res: Response) => {
   res.json({
-    success:false,
-    message:"Route not found"
-  })
-}
+    success: false,
+    message: "Route not found",
+  });
+};
 
 export const productController = {
   getAllProducts,
@@ -128,5 +128,5 @@ export const productController = {
   findProductById,
   updateProductById,
   deleteProductById,
-  noRouteFound
+  noRouteFound,
 };

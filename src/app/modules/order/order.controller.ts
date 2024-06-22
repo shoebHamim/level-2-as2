@@ -18,17 +18,17 @@ const createOrder = async (req: Request, res: Response) => {
         message: "Order not found",
       });
     } else {
-      if (productData.inventory.quantity - zodParseData.quantity<0) {
+      if (productData.inventory.quantity - zodParseData.quantity < 0) {
         res.status(503).json({
           success: false,
           message: "Insufficient quantity available in inventory",
         });
       } else {
         //reduce the quantity
-        
+
         productData.inventory.quantity -= zodParseData.quantity;
-        if(productData.inventory.quantity==0){
-          productData.inventory.inStock=false;
+        if (productData.inventory.quantity == 0) {
+          productData.inventory.inStock = false;
         }
         const quantityReduced = await productService.updateProductByIdFromDB(
           productId,

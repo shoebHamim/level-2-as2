@@ -129,7 +129,7 @@ const sendErrorResponse = (res, err) => {
 const noRouteFound = (req, res) => {
     res.json({
         success: false,
-        message: "Route not found"
+        message: "Route not found",
     });
 };
 exports.productController = {
@@ -138,5 +138,5 @@ exports.productController = {
     findProductById,
     updateProductById,
     deleteProductById,
-    noRouteFound
+    noRouteFound,
 };
