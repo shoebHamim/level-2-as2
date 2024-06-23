@@ -30,10 +30,7 @@ const createOrder = async (req: Request, res: Response) => {
         if (productData.inventory.quantity == 0) {
           productData.inventory.inStock = false;
         }
-        const quantityReduced = await productService.updateProductByIdFromDB(
-          productId,
-          productData
-        );
+        await productService.updateProductByIdFromDB(productId, productData);
         // make the order
         const result = await orderService.createOrderToDB(zodParseData);
 
@@ -66,14 +63,13 @@ const findAllOrders = async (req: Request, res: Response) => {
       const result = await orderService.findAllOrdersByEmailFromDB(
         req.query.email as string
       );
-      if(!result.length){
+      if (!result.length) {
         res.status(404).json({
-          success:false,
-          message:"No order found by user email!",
-          data:result
-        })
-      }
-      else{
+          success: false,
+          message: "No order found by user email!",
+          data: result,
+        });
+      } else {
         res.json({
           success: true,
           message: "Orders fetched successfully for user email!",
@@ -86,7 +82,7 @@ const findAllOrders = async (req: Request, res: Response) => {
   }
 };
 
-const sendErrorResponse = (res: Response, err: any) => {
+const sendErrorResponse = (res: Response, err:unknown) => {
   res.status(500).json({
     success: false,
     message: "something went wrong!",

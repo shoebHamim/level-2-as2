@@ -4,7 +4,7 @@ import productValidationSchema from "./product.validation";
 
 const getAllProducts = async (req: Request, res: Response) => {
   const searchTerm = req.query.searchTerm;
-  let result: any;
+  let result: unknown;
   let message: string;
   try {
     if (searchTerm) {
@@ -107,7 +107,7 @@ const deleteProductById = async (req: Request, res: Response) => {
   }
 };
 
-const sendErrorResponse = (res: Response, err: any) => {
+const sendErrorResponse = (res: Response, err: unknown) => {
   res.status(500).json({
     success: false,
     message: "something went wrong!",

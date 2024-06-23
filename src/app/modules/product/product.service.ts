@@ -11,7 +11,7 @@ const getAllProductsFromDB=async()=>{
 const findProductByIDFromDB=async(productId:string)=>{
   return await productModel.findOne({_id:productId})
 }
-const updateProductByIdFromDB=async(productId:string,updatedData:Object)=>{
+const updateProductByIdFromDB=async(productId:string,updatedData:TProduct)=>{
   return await productModel.findOneAndUpdate({_id:productId},updatedData,{new:true})
 }
 const deleteProductByIdFromDB=async(productId:string)=>{
