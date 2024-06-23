@@ -127,7 +127,7 @@ const sendErrorResponse = (res, err) => {
     });
 };
 const noRouteFound = (req, res) => {
-    res.json({
+    res.status(404).json({
         success: false,
         message: "Route not found",
     });
