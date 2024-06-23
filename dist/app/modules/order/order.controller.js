@@ -41,7 +41,7 @@ const createOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
                 if (productData.inventory.quantity == 0) {
                     productData.inventory.inStock = false;
                 }
-                const quantityReduced = yield product_service_1.productService.updateProductByIdFromDB(productId, productData);
+                yield product_service_1.productService.updateProductByIdFromDB(productId, productData);
                 // make the order
                 const result = yield order_service_1.default.createOrderToDB(zodParseData);
                 res.json({
@@ -77,7 +77,7 @@ const findAllOrders = (req, res) => __awaiter(void 0, void 0, void 0, function* 
                 res.status(404).json({
                     success: false,
                     message: "No order found by user email!",
-                    data: result
+                    data: result,
                 });
             }
             else {
